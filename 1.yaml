@@ -1,0 +1,59 @@
+openapi: 3.0.0
+info:
+  title: TradingValley Puzzle Api
+  description: For TradingValley Puzzle
+  version: 1.0.0
+servers:
+  - url: https://127.0.0.1:3000
+paths:
+  /api/hello:
+    get:
+      summary: Hello
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+           text/plain:
+            schema:
+              type: string
+              example: Hello!
+  
+  /api/item:
+    post:
+      summary: xxx
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReqBodyStruct'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResSuccess'
+        '422':
+          description: Incorrect data
+          content: 
+            text/plain:
+              schema:
+                type: string
+                example: incorrect data
+            
+components:
+  schemas:
+    ReqBodyStruct:
+      type: object
+      properties:
+        item_name:
+          type: string
+          example: Apple
+    ResSuccess:
+      type: object
+      properties:
+        result:
+          type: string
+          example: success
